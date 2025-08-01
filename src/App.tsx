@@ -9,7 +9,7 @@ import ParticleBackground from './components/ParticleBackground';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-100 via-dark-200 to-dark-300">
+    <div className="min-h-screen bg-gradient-to-br from-dark-100 via-dark-200 to-dark-300 overflow-x-hidden">
       <ParticleBackground />
       <Navbar />
       <main>

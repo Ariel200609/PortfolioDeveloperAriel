@@ -87,8 +87,8 @@ const About: React.FC = () => {
   const education = [
     {
       title: 'Tecnicatura Universitaria en Programación',
-      institution: 'Universidad Nacional del Sur - Bahía Blanca',
-      period: '2023 - Presente',
+      institution: 'Universidad Tecnológica Nacional - Bahía Blanca',
+      period: '2025 - Presente',
       description: 'Formación en desarrollo de software, algoritmos y programación orientada a objetos.',
     },
   ];
@@ -129,7 +129,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 relative">
+         <section id="about" className="py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -208,11 +208,11 @@ const About: React.FC = () => {
                     viewport={{ once: true }}
                     whileHover={{ 
                       scale: 1.05,
-                      rotateY: 5,
-                      rotateX: 5,
+                      rotateY: window.innerWidth > 768 ? 5 : 0,
+                      rotateX: window.innerWidth > 768 ? 5 : 0,
                       z: 20
                     }}
-                                         className="relative group cursor-pointer p-4 transition-all duration-300"
+                    className="relative group cursor-pointer p-4 transition-all duration-300 hover:bg-primary-500/10 hover:border-primary-500/30 rounded-xl border border-transparent overflow-hidden"
                     style={{
                       transformStyle: 'preserve-3d',
                       perspective: '1000px'
@@ -221,17 +221,17 @@ const About: React.FC = () => {
                                                                    <div className="flex flex-col items-center text-center space-y-2">
                         <motion.div
                           whileHover={{ 
-                            scale: 1.2,
-                            rotateY: 10,
-                            rotateX: 10
+                            scale: window.innerWidth > 768 ? 1.2 : 1.1,
+                            rotateY: window.innerWidth > 768 ? 10 : 0,
+                            rotateX: window.innerWidth > 768 ? 10 : 0
                           }}
                           transition={{ duration: 0.3 }}
                           style={{ transformStyle: 'preserve-3d' }}
                                                                           >
-                           {React.createElement(skill.icon as any, { className: `h-10 w-10 ${skill.color}` })}
+                           {React.createElement(skill.icon as any, { className: `h-10 w-10 ${skill.color} group-hover:text-primary-400 group-hover:drop-shadow-lg group-hover:drop-shadow-primary-400/50 transition-all duration-300` })}
                          </motion.div>
                        <div>
-                         <p className="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                         <p className="text-gray-400 text-xs opacity-0 group-hover:opacity-100 group-hover:text-primary-400 transition-all duration-300">
                            {skill.description}
                          </p>
                        </div>
@@ -259,11 +259,11 @@ const About: React.FC = () => {
                      viewport={{ once: true }}
                      whileHover={{ 
                        scale: 1.05,
-                       rotateY: 5,
-                       rotateX: 5,
+                       rotateY: window.innerWidth > 768 ? 5 : 0,
+                       rotateX: window.innerWidth > 768 ? 5 : 0,
                        z: 20
                      }}
-                                           className="relative group cursor-pointer p-4 transition-all duration-300"
+                     className="relative group cursor-pointer p-4 transition-all duration-300 hover:bg-primary-500/10 hover:border-primary-500/30 rounded-xl border border-transparent overflow-hidden"
                      style={{
                        transformStyle: 'preserve-3d',
                        perspective: '1000px'
@@ -272,17 +272,17 @@ const About: React.FC = () => {
                                                                                        <div className="flex flex-col items-center text-center space-y-2">
                          <motion.div
                            whileHover={{ 
-                             scale: 1.2,
-                             rotateY: 10,
-                             rotateX: 10
+                             scale: window.innerWidth > 768 ? 1.2 : 1.1,
+                             rotateY: window.innerWidth > 768 ? 10 : 0,
+                             rotateX: window.innerWidth > 768 ? 10 : 0
                            }}
                            transition={{ duration: 0.3 }}
                            style={{ transformStyle: 'preserve-3d' }}
                                                                              >
-                            {React.createElement(tool.icon as any, { className: `h-10 w-10 ${tool.color}` })}
+                            {React.createElement(tool.icon as any, { className: `h-10 w-10 ${tool.color} group-hover:text-primary-400 group-hover:drop-shadow-lg group-hover:drop-shadow-primary-400/50 transition-all duration-300` })}
                           </motion.div>
                         <div>
-                          <p className="text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <p className="text-gray-400 text-xs opacity-0 group-hover:opacity-100 group-hover:text-primary-400 transition-all duration-300">
                             {tool.description}
                           </p>
                         </div>
