@@ -5,12 +5,12 @@ import { ExternalLink, Github, Globe, Code } from 'lucide-react';
 const Projects: React.FC = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Plataforma completa de comercio electrónico con carrito de compras, sistema de pagos y panel de administración.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: '/api/placeholder/400/250',
-      github: 'https://github.com/Ariel200609',
-      live: '#',
+      title: 'Landing page Para Ferradas Automotores',
+      description: 'Landing page moderna y responsiva para Ferradas Automotores con diseño profesional y experiencia de usuario optimizada.',
+      technologies: ['React', 'Vite', 'Figma', 'TypeScript'],
+      image: `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg`,
+      github: 'https://github.com/Ariel200609/FerradasAutomotores.git',
+      live: 'https://ferradasautomotores.com',
       featured: true,
     },
     {
@@ -125,8 +125,22 @@ const Projects: React.FC = () => {
                   }}
                   className="group relative bg-dark-300/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-primary-500/20 hover:border-primary-500/40 transition-all duration-300"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-600/20 flex items-center justify-center">
-                    <Code className="h-16 w-16 text-primary-500" />
+                  <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-600/20 flex items-center justify-center overflow-hidden">
+                    {project.image === `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg` ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : project.image && project.image !== '/api/placeholder/400/250' ? (
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Code className="h-16 w-16 text-primary-500" />
+                    )}
                   </div>
                   <div className="p-6">
                     <h4 className="text-xl font-bold text-white mb-3 group-hover:text-primary-500 transition-colors duration-300">
@@ -193,8 +207,22 @@ const Projects: React.FC = () => {
                 }}
                 className="group bg-dark-300/50 backdrop-blur-sm rounded-xl overflow-hidden border border-primary-500/20 hover:border-primary-500/40 transition-all duration-300"
               >
-                <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-600/20 flex items-center justify-center">
-                  <Code className="h-12 w-12 text-primary-500" />
+                <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-600/20 flex items-center justify-center overflow-hidden">
+                  {project.image === `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg` ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : project.image && project.image !== '/api/placeholder/400/250' ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Code className="h-12 w-12 text-primary-500" />
+                  )}
                 </div>
                 <div className="p-4">
                   <h4 className="text-lg font-bold text-white mb-2 group-hover:text-primary-500 transition-colors duration-300">

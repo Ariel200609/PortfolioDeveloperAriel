@@ -13,7 +13,8 @@ import {
   SiGithub,
   SiVsco,
   SiGit,
-  SiPostman
+  SiPostman,
+  SiMongodb
 } from 'react-icons/si';
 
 const About: React.FC = () => {
@@ -81,6 +82,14 @@ const About: React.FC = () => {
       bgColor: 'bg-yellow-500/10',
       borderColor: 'border-yellow-500/30',
       description: 'Lenguaje web dinámico'
+    },
+    { 
+      name: 'MongoDB', 
+      icon: SiMongodb, 
+      color: 'text-green-500',
+      bgColor: 'bg-green-500/10',
+      borderColor: 'border-green-500/30',
+      description: 'Base de datos NoSQL'
     },
   ];
 
