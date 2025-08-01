@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden py-8 lg:py-0">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-100 via-dark-200 to-dark-300"></div>
       
@@ -223,7 +223,7 @@ const Hero: React.FC = () => {
            initial={{ opacity: 0, x: 50 }}
            animate={{ opacity: 1, x: 0 }}
            transition={{ duration: 0.8, delay: 0.3 }}
-           className="flex justify-center lg:justify-end mt-8 lg:mt-0"
+           className="flex justify-center lg:justify-end mt-8 lg:mt-0 mb-8 lg:mb-0"
          >
            <InteractiveLaptop />
          </motion.div>

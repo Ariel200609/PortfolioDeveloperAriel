@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Menu, X, Code } from 'lucide-react';
+import { Menu, X, Home, User, FolderOpen, Mail } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,10 +17,10 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Inicio', to: 'home' },
-    { name: 'Sobre Mí', to: 'about' },
-    { name: 'Proyectos', to: 'projects' },
-    { name: 'Contacto', to: 'contact' },
+    { name: 'Inicio', to: 'home', icon: Home },
+    { name: 'Sobre Mí', to: 'about', icon: User },
+    { name: 'Proyectos', to: 'projects', icon: FolderOpen },
+    { name: 'Contacto', to: 'contact', icon: Mail },
   ];
 
   return (
@@ -47,20 +47,29 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+                         <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.to}
-                  spy={true}
-                  smooth={true}
-                  offset={-80}
-                  duration={500}
-                  className="text-gray-300 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer"
-                  activeClass="text-primary-500"
-                >
-                  {item.name}
-                </Link>
+                                 <div
+                   key={item.name}
+                   className="relative group"
+                 >
+                   <Link
+                     to={item.to}
+                     spy={true}
+                     smooth={true}
+                     offset={-80}
+                     duration={500}
+                     className="text-gray-300 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer flex items-center"
+                     activeClass="text-primary-500"
+                   >
+                     <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                     <div className="overflow-hidden ml-2">
+                       <span className="whitespace-nowrap transform transition-all duration-300 group-hover:translate-x-0 translate-x-[-100%] opacity-0 group-hover:opacity-100">
+                         {item.name}
+                       </span>
+                     </div>
+                   </Link>
+                 </div>
               ))}
             </div>
           </div>
@@ -95,11 +104,12 @@ const Navbar: React.FC = () => {
               smooth={true}
               offset={-80}
               duration={500}
-              className="text-gray-300 hover:text-primary-500 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer"
+              className="text-gray-300 hover:text-primary-500 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer flex items-center justify-center space-x-2"
               activeClass="text-primary-500"
               onClick={() => setIsOpen(false)}
             >
-              {item.name}
+              <item.icon className="h-5 w-5" />
+              <span>{item.name}</span>
             </Link>
           ))}
         </div>

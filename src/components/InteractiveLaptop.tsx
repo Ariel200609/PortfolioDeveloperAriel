@@ -45,7 +45,7 @@ const InteractiveLaptop: React.FC = () => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-      className="relative w-64 h-48 md:w-80 md:h-64 cursor-pointer"
+             className="relative w-64 h-56 md:w-80 md:h-64 cursor-pointer"
     >
       <motion.div
         style={{
