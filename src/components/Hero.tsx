@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { ArrowDown, Github, Instagram, Mail, MessageCircle } from 'lucide-react';
+import InteractiveLaptop from './InteractiveLaptop';
 
 const Hero: React.FC = () => {
   const [text, setText] = useState('');
@@ -56,21 +57,68 @@ const Hero: React.FC = () => {
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-8"
-        >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center lg:text-left space-y-8"
+          >
           {/* Profile Image/Logo */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-8 glow"
+            initial={{ 
+              scale: 0, 
+              rotateY: -180,
+              rotateX: -90,
+              opacity: 0 
+            }}
+            animate={{ 
+              scale: 1, 
+              rotateY: 0,
+              rotateX: 0,
+              opacity: 1 
+            }}
+            transition={{ 
+              delay: 0.2, 
+              duration: 1.2,
+              type: "spring",
+              stiffness: 100,
+              damping: 15
+            }}
+            whileHover={{ 
+              scale: 1.1,
+              rotateY: 10,
+              rotateX: 5,
+              transition: { duration: 0.3 }
+            }}
+            className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-8 glow perspective-1000"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 0 30px rgba(62, 144, 235, 0.4), 0 0 60px rgba(62, 144, 235, 0.2)'
+            }}
           >
-            <span className="text-4xl font-bold text-white">&lt;/&gt;</span>
+            <motion.span 
+              className="text-4xl font-bold text-white"
+              initial={{ 
+                rotateY: -180,
+                scale: 0.5,
+                opacity: 0
+              }}
+              animate={{ 
+                rotateY: 0,
+                scale: 1,
+                opacity: 1
+              }}
+              transition={{ 
+                delay: 0.8,
+                duration: 0.8,
+                ease: "easeOut"
+              }}
+            >
+              &lt;/&gt;
+            </motion.span>
           </motion.div>
 
           {/* Name and Title */}
@@ -152,7 +200,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            className="flex justify-center space-x-6 pt-8"
+            className="flex justify-center lg:justify-start space-x-6 pt-8"
           >
             {socialLinks.map((social) => (
               <motion.a
@@ -169,7 +217,18 @@ const Hero: React.FC = () => {
             ))}
           </motion.div>
         </motion.div>
+
+                 {/* Right Column - 3D Laptop */}
+         <motion.div
+           initial={{ opacity: 0, x: 50 }}
+           animate={{ opacity: 1, x: 0 }}
+           transition={{ duration: 0.8, delay: 0.3 }}
+           className="flex justify-center lg:justify-end mt-8 lg:mt-0"
+         >
+           <InteractiveLaptop />
+         </motion.div>
       </div>
+    </div>
 
       {/* Scroll indicator */}
       <motion.div

@@ -76,8 +76,7 @@ git push origin main
 ## 🌐 Acceso al Sitio
 
 Una vez desplegado, tu portfolio estará disponible en:
-- **URL principal**: `https://ariel200609.github.io/PortfolioDeveloperAriel`
-- **URL alternativa**: `https://arielmontoya.dev` (si configuras un dominio personalizado)
+- **URL**: `https://ariel200609.github.io/PortfolioDeveloperAriel`
 
 ## 🔄 Actualizaciones
 
@@ -112,17 +111,15 @@ git push origin main
 - El proyecto incluye archivos `404.html` y scripts de redirección
 - Si tienes problemas, verifica que estos archivos estén en la carpeta `public/`
 
-## 📱 Configuración de Dominio Personalizado (Opcional)
+## 📱 Configuración Final
 
-1. **Comprar un dominio** (ej: arielmontoya.dev)
-2. **Configurar DNS**:
-   - CNAME: `ariel200609.github.io`
-3. **Configurar en GitHub**:
-   - Ve a Settings > Pages
-   - En "Custom domain", agrega tu dominio
-   - Marca "Enforce HTTPS"
-4. **Actualizar CNAME**:
-   - El archivo `public/CNAME` se actualizará automáticamente
+Una vez desplegado, tu portfolio estará disponible en:
+**https://ariel200609.github.io/PortfolioDeveloperAriel**
+
+### Verificar Despliegue
+- El sitio puede tardar unos minutos en estar disponible
+- Verifica que todas las secciones funcionen correctamente
+- Prueba la navegación y formularios
 
 ## 📊 Monitoreo
 

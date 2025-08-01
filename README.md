@@ -91,17 +91,12 @@ npm start
 
 El proyecto está configurado para desplegarse automáticamente en GitHub Pages.
 
-1. **Configuración inicial** (solo la primera vez):
-```bash
-npm install gh-pages --save-dev
-```
-
-2. **Desplegar**:
+1. **Desplegar**:
 ```bash
 npm run deploy
 ```
 
-3. **Configurar GitHub Pages**:
+2. **Configurar GitHub Pages**:
    - Ve a tu repositorio en GitHub
    - Ve a Settings > Pages
    - En "Source", selecciona "Deploy from a branch"

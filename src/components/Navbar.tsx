@@ -40,7 +40,6 @@ const Navbar: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <Code className="h-8 w-8 text-primary-500" />
             <span className="text-xl font-bold gradient-text">
               &lt;byAriel/&gt;
             </span>
