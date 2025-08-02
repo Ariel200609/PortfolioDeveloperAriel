@@ -6,27 +6,49 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: '',
+    message: ''
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitStatus('idle');
+
+    const form = e.target as HTMLFormElement;
+    const formDataObj = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mblkalaz', {
+        method: 'POST',
+        body: formDataObj,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        form.reset();
+        setTimeout(() => setSubmitStatus('idle'), 3000);
+      } else {
+        setSubmitStatus('error');
+        setTimeout(() => setSubmitStatus('idle'), 3000);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      alert('¡Mensaje enviado! Te responderé pronto.');
-    }, 2000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -214,6 +236,27 @@ const Contact: React.FC = () => {
                     placeholder="Cuéntame sobre tu proyecto..."
                   />
                 </div>
+
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg"
+                  >
+                    <p className="text-green-400 text-center">¡Mensaje enviado exitosamente! Te responderé pronto.</p>
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg"
+                  >
+                    <p className="text-red-400 text-center">Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.</p>
+                  </motion.div>
+                )}
 
                 <motion.button
                   type="submit"
