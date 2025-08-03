@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
               rotateX: 5,
               transition: { duration: 0.3 }
             }}
-            className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-8 glow perspective-1000"
+            className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary-400 to-primary-500 flex items-center justify-center mb-8 glow perspective-1000"
             style={{
               transformStyle: 'preserve-3d',
               boxShadow: '0 0 30px rgba(62, 144, 235, 0.4), 0 0 60px rgba(62, 144, 235, 0.2)'
@@ -127,7 +127,8 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold text-white"
+              className="text-5xl md:text-6xl font-bold text-white"
+              style={{ fontFamily: 'Zen Dots, cursive' }}
             >
               Ariel Montoya
             </motion.h1>
@@ -137,8 +138,9 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-xl md:text-2xl text-gray-300 font-medium"
+              style={{ fontFamily: 'Zen Dots, cursive' }}
             >
-              Desarrollador en formación | Amante del código y la innovación
+              Estudiate | Tecnicatura Universitaria en Programación
             </motion.h2>
           </div>
 
@@ -172,7 +174,7 @@ const Hero: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-300 glow"
+                className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 text-white font-semibold rounded-lg hover:from-primary-500 hover:to-primary-600 transition-all duration-300 glow"
               >
                 Ver Proyectos
               </motion.button>

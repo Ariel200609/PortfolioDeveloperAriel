@@ -38,11 +38,21 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center relative group cursor-pointer"
           >
-            <span className="text-xl font-bold gradient-text">
-              &lt;byAriel/&gt;
-            </span>
+            <div className="flex items-center bg-transparent rounded-lg px-3 py-2 transition-all duration-300 overflow-hidden">
+              <span className="text-xl font-bold text-primary-500 group-hover:scale-110 transition-transform duration-200">
+                &lt;
+              </span>
+              <div className="overflow-hidden mx-2 w-0 group-hover:w-auto transition-all duration-300">
+                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 text-primary-500 font-medium text-sm transition-opacity duration-300">
+                  byAriel
+                </span>
+              </div>
+              <span className="text-xl font-bold text-primary-500 group-hover:scale-110 transition-transform duration-200">
+              /&gt;
+              </span>
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
