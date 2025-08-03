@@ -69,12 +69,12 @@ const Navbar: React.FC = () => {
                      smooth={true}
                      offset={-80}
                      duration={500}
-                     className="text-gray-300 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer flex items-center"
+                     className="text-gray-300 hover:text-primary-500 px-3 py-2 rounded-md text-sm font-medium transition-all duration-500 ease-out cursor-pointer flex items-center hover:bg-primary-500/10"
                      activeClass="text-primary-500"
                    >
-                     <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-200" />
+                     <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-500 ease-out" />
                      <div className="overflow-hidden ml-2">
-                       <span className="whitespace-nowrap transform transition-all duration-300 group-hover:translate-x-0 translate-x-[-100%] opacity-0 group-hover:opacity-100">
+                       <span className="whitespace-nowrap transform transition-all duration-500 ease-out group-hover:translate-x-0 translate-x-[-100%] opacity-0 group-hover:opacity-100">
                          {item.name}
                        </span>
                      </div>

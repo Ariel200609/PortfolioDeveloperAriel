@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
       name: 'GitHub',
       url: 'https://github.com/Ariel200609',
       icon: Github,
-      color: 'hover:text-gray-400',
+      color: 'hover:text-violet-400',
     },
     {
       name: 'Instagram',
@@ -172,9 +172,13 @@ const Hero: React.FC = () => {
               duration={500}
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  y: -2,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 text-white font-semibold rounded-lg hover:from-primary-500 hover:to-primary-600 transition-all duration-300 glow"
+                className="px-8 py-3 bg-gradient-to-r from-primary-400 to-primary-500 text-white font-semibold rounded-lg hover:from-primary-500 hover:to-primary-600 transition-all duration-500 ease-out glow shadow-lg hover:shadow-xl hover:shadow-primary-500/25"
               >
                 Ver Proyectos
               </motion.button>
@@ -188,9 +192,13 @@ const Hero: React.FC = () => {
               duration={500}
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  y: -2,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border-2 border-primary-500 text-primary-500 font-semibold rounded-lg hover:bg-primary-500 hover:text-white transition-all duration-300"
+                className="px-8 py-3 border-2 border-primary-500 text-primary-500 font-semibold rounded-lg hover:bg-primary-500 hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-primary-500/25"
               >
                 Contáctame
               </motion.button>
@@ -240,11 +248,36 @@ const Hero: React.FC = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="text-primary-500"
+          animate={{ 
+            y: [0, 10, 0],
+            rotate: [0, 5, -5, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 3, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="relative"
         >
-          <ArrowDown className="h-6 w-6" />
+          {/* Flecha de aire con efecto glow */}
+          <div className="w-8 h-8 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center shadow-lg shadow-primary-500/50">
+            <ArrowDown className="h-5 w-5 text-white" />
+          </div>
+          
+          {/* Efecto de aire alrededor */}
+          <motion.div
+            animate={{ 
+              scale: [1, 1.5, 1],
+              opacity: [0.3, 0, 0.3]
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute inset-0 w-8 h-8 bg-gradient-to-br from-primary-400/30 to-primary-500/30 rounded-full"
+          />
         </motion.div>
       </motion.div>
     </section>

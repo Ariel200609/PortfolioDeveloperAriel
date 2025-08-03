@@ -23,10 +23,10 @@ const Projects: React.FC = () => {
       featured: true,
     },
     {
-      title: 'Weather Dashboard',
-      description: 'Dashboard meteorológico con datos en tiempo real, gráficos interactivos y pronósticos detallados.',
-      technologies: ['Python', 'Flask', 'Chart.js', 'OpenWeather API'],
-      image: '/api/placeholder/400/250',
+      title: 'Sistema de Hotel',
+      description: 'Proyecto Final de bases de datos, API REST desarrollada con Node.js, Express y Mongoose que permite gestionar habitaciones, reservas y huéspedes de un hotel.',
+      technologies: ['Node.js', 'Express', 'Mongoose', 'MongoDB', 'API REST'],
+      image: `${process.env.PUBLIC_URL}/SisHotel.jpg`,
       github: 'https://github.com/Ariel200609',
       live: '#',
       featured: false,
@@ -126,7 +126,7 @@ const Projects: React.FC = () => {
                   className="group relative bg-dark-300/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-primary-500/20 hover:border-primary-500/40 transition-all duration-300"
                 >
                   <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-600/20 flex items-center justify-center overflow-hidden">
-                    {project.image === `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg` || project.image === `${process.env.PUBLIC_URL}/VolaWeb.png` ? (
+                    {project.image === `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg` || project.image === `${process.env.PUBLIC_URL}/VolaWeb.png` || project.image === `${process.env.PUBLIC_URL}/SisHotel.jpg` ? (
                       <img 
                         src={project.image} 
                         alt={project.title}
@@ -208,7 +208,7 @@ const Projects: React.FC = () => {
                 className="group bg-dark-300/50 backdrop-blur-sm rounded-xl overflow-hidden border border-primary-500/20 hover:border-primary-500/40 transition-all duration-300"
               >
                 <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-primary-600/20 flex items-center justify-center overflow-hidden">
-                  {project.image === `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg` || project.image === `${process.env.PUBLIC_URL}/VolaWeb.png` ? (
+                  {project.image === `${process.env.PUBLIC_URL}/FerradasAutomotoresPage.jpg` || project.image === `${process.env.PUBLIC_URL}/VolaWeb.png` || project.image === `${process.env.PUBLIC_URL}/SisHotel.jpg` ? (
                     <img 
                       src={project.image} 
                       alt={project.title}

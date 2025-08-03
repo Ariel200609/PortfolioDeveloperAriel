@@ -1,69 +1,93 @@
-import React, { useEffect, useState } from 'react';
-
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  speedX: number;
-  speedY: number;
-  opacity: number;
-}
+import React, { useEffect, useRef } from 'react';
 
 const ParticleBackground: React.FC = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const createParticles = () => {
-      const newParticles: Particle[] = [];
-      for (let i = 0; i < 50; i++) {
-        newParticles.push({
-          id: i,
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          size: Math.random() * 2 + 1,
-          speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.1,
-        });
-      }
-      setParticles(newParticles);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      opacity: number;
+    }> = [];
+
+    // Crear partículas de agua
+    for (let i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 3 + 1,
+        opacity: Math.random() * 0.3 + 0.1,
+      });
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle) => {
+        // Actualizar posición
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Efecto de ondulación
+        particle.vx += Math.sin(Date.now() * 0.001 + particle.x * 0.01) * 0.01;
+        particle.vy += Math.cos(Date.now() * 0.001 + particle.y * 0.01) * 0.01;
+
+        // Mantener partículas en pantalla
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        // Dibujar partícula
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(59, 130, 246, ${particle.opacity})`;
+        ctx.fill();
+
+        // Efecto de brillo
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(147, 197, 253, ${particle.opacity * 0.5})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
     };
 
-    createParticles();
+    animate();
 
-    const animateParticles = () => {
-      setParticles(prevParticles =>
-        prevParticles.map(particle => ({
-          ...particle,
-          x: particle.x + particle.speedX,
-          y: particle.y + particle.speedY,
-          opacity: particle.opacity + (Math.random() - 0.5) * 0.1,
-        }))
-      );
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
 
-    const interval = setInterval(animateParticles, 50);
-    return () => clearInterval(interval);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0">
-      {particles.map(particle => (
-        <div
-          key={particle.id}
-          className="absolute rounded-full bg-primary-500"
-          style={{
-            left: `${particle.x}px`,
-            top: `${particle.y}px`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            opacity: particle.opacity,
-            boxShadow: `0 0 ${particle.size * 2}px rgba(62, 144, 235, ${particle.opacity})`,
-          }}
-        />
-      ))}
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none z-0"
+      style={{ opacity: 0.3 }}
+    />
   );
 };
 
