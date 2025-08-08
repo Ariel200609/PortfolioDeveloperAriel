@@ -40,24 +40,6 @@ const Projects: React.FC = () => {
       live: '#',
       featured: false,
     },
-    {
-      title: 'Chat Application',
-      description: 'Aplicación de chat en tiempo real con autenticación, mensajes privados y notificaciones.',
-      technologies: ['React', 'Socket.io', 'Express', 'MongoDB'],
-      image: '/api/placeholder/400/250',
-      github: 'https://github.com/Ariel200609',
-      live: '#',
-      featured: false,
-    },
-    {
-      title: 'Data Visualization Tool',
-      description: 'Herramienta de visualización de datos con múltiples tipos de gráficos y exportación de reportes.',
-      technologies: ['Python', 'Pandas', 'Plotly', 'Streamlit'],
-      image: '/api/placeholder/400/250',
-      github: 'https://github.com/Ariel200609',
-      live: '#',
-      featured: false,
-    },
   ];
 
   const containerVariants = {
